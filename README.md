@@ -99,7 +99,7 @@ $ service ssh restart
 ```
 - now you can use ssh to login with the new user you created, at your computer:
 ```sh
-ssh -i [privateKeyFilename] grader@52.24.125.52
+ssh -i [privateKeyFilename] grader@18.195.234.224
 ```
 ### Change the SSH port from 22 to 2200
 - Use
