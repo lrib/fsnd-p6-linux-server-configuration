@@ -23,11 +23,11 @@ Configuration Steps:
 ------------
 
 ## Criar uma VM no Amazon:
-- Create a VM on Amazon Lightsail [https://lightsail.aws.amazon.com/ls/webapp/home/instances];
-- Create an instance of a Linux VM: [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
-- Wait for "running".
+- Criar uma VM na Amazon Lightsail [https://lightsail.aws.amazon.com/ls/webapp/home/instances];
+- Criar uma instancia de uma VM com Linux: [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
+- Esperar a maquina entrar em "running".
 
-### Update all currently installed packages:
+## Update all currently installed packages:
 
 - Update command
 ```shell
@@ -40,41 +40,41 @@ $ sudo apt-get dist-upgrade
 $ sudo reboot
 ```
 
-### Update timezone:
+## Update timezone:
 
 ```shell
 $ tzselect
 ```
 Open terminal and change the timezone. following the instruction.
 
-### Create a new SSH key for segure connections:
+## Create a new SSH key for segure connections:
 
 - Using the Windows Gitbash, get a new key:
 ```sh
 $ ssh-keygen
 ```
 Save the key: /c/Users/<YOUR_WINDOWS_USERNAME>/.ssh/main_key
-I've paste the contents of the grader user's SSH key into the "Notes to Reviewer" field.
-### Add new user (Using AWS console):
+
+## Add new user (Using AWS console):
 
 - Using the SSH Amamzon Lightsail console:
 ```sh
 $ sudo adduser grader
 ```
- - Assign and confirm a password for the new user
- - Enter any additional information about the new user. This is completely optional and can be ignored if you do not want to use these fields.
- - After then, you will be prompted to confirm that the information provided is correct. Enter Y to continue.
+ - Atribuir e confirmar uma senha para o novo usuário
+ - Digite qualquer informação adicional sobre o novo usuário. Isso é totalmente opcional e pode ser ignorado se você não quiser utilizar esses campos.
+ - Depois, você será solicitado a confirmar se as informações fornecidas estavam corretas. Digite Y para continuar.
 
-- Assign access to the newly created user.
+- Atribuir acesso ao novo utilizador criado
 ```sh
 $ sudo touch /etc/sudoers.d/grader
 $ sudo nano /etc/sudoers.d/grader
 ```
-- Add in the grader file the command: grader ALL=(ALL:ALL) ALL
-- Send CTRL+O (salve), ENTER (confirm), CTRL+X (exit nano). 
-- User grader already has sudo privilege.
+- Adicione no arquivo grader o comando: grader ALL=(ALL:ALL) ALL
+- Depois de adicionar o comando executar CTRL+O (salvar), ENTER (confirmar), CTRL+X (sair do nano). 
+- O usário grader já tem previlegio sudo.
 
-### Allow secure user access to grader:
+## Permitir acesso seguro do usuario grader:
 - Copy the public key generated on your local machine (main_key.pub) to this file and save
 ```sh
 $ su - grader
@@ -87,7 +87,7 @@ $ sudo nano .ssh/authorized_keys
 $ chmod 700 .ssh
 $ chmod 644 .ssh/authorized_keys
 ```
-### Secure SSH access without the Amazon console:
+## Acesso seguro por SSH, sem o console Amazon:
 - On your instance dashboard, Networking tab, add a Custom TCP application with Port range = 2200 to your instance's Firewall
 - Use the command below to open the file and edit line 4 from Port 22 to Port 2200. Save and quit nano.
 ```sh
@@ -99,9 +99,9 @@ $ service ssh restart
 ```
 - now you can use ssh to login with the new user you created, at your computer:
 ```sh
-ssh -i [privateKeyFilename] grader@18.195.234.224
+ssh -i [privateKeyFilename] grader@52.24.125.52
 ```
-### Change the SSH port from 22 to 2200
+## Change the SSH port from 22 to 2200
 - Use
 ```sh
 $ sudo vim /etc/ssh/sshd_config
@@ -111,7 +111,7 @@ $ sudo vim /etc/ssh/sshd_config
 ```sh
 ssh grader@18.195.234.224 -i [privateKeyFilename] -p 2200
 ```
-### Create Rules and Enable Uncomplicated Firewall (UFW) 
+## Create Rules and Enable Uncomplicated Firewall (UFW) 
 - Check the current UFW status
 ```sh
 sudo ufw status
@@ -133,10 +133,6 @@ $ sudo ufw allow 2200/tcp
 ```sh
 $ sudo ufw allow www
 ```
-- Allow incoming connection for NTP on port 123
-```sh
-$ sudo ufw allow ntp
-```
 - Enable firewall 
 ```sh
 $ sudo ufw enable
@@ -145,7 +141,7 @@ $ sudo ufw enable
 ```sh
 $ sudo ufw status
 ```
-### Remove root user access and password authentication
+## Remove root user access and password authentication
 - Open the right file by using
 ```sh
 $ sudo nano /etc/ssh/sshd_config
@@ -177,6 +173,9 @@ $ sudo service apache2 restart
 ```sh
 $ sudo apt-get install postgresql
 ```
+?????????????????????????????????????
+Check if no remote connections are allowed sudo vim /etc/postgresql/9.3/main/pg_hba.conf
+?????????????????????????????????????
 - Login as user "postgres" 
 ```sh
 $ sudo su - postgres
