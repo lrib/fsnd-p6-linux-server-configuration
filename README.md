@@ -54,7 +54,7 @@ Open terminal and change the timezone. following the instruction.
 $ ssh-keygen
 ```
 Save the key: /c/Users/<YOUR_WINDOWS_USERNAME>/.ssh/main_key
-
+I've paste the contents of the grader user's SSH key into the "Notes to Reviewer" field.
 ### Add new user (Using AWS console):
 
 - Using the SSH Amamzon Lightsail console:
