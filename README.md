@@ -27,7 +27,7 @@ Configuration Steps:
 - Create an instance of a Linux VM: [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
 - Wait for "running".
 
-## Update all currently installed packages:
+### Update all currently installed packages:
 
 - Update command
 ```shell
@@ -40,14 +40,14 @@ $ sudo apt-get dist-upgrade
 $ sudo reboot
 ```
 
-## Update timezone:
+### Update timezone:
 
 ```shell
 $ tzselect
 ```
 Open terminal and change the timezone. following the instruction.
 
-## Create a new SSH key for segure connections:
+### Create a new SSH key for segure connections:
 
 - Using the Windows Gitbash, get a new key:
 ```sh
@@ -55,7 +55,7 @@ $ ssh-keygen
 ```
 Save the key: /c/Users/<YOUR_WINDOWS_USERNAME>/.ssh/main_key
 
-## Add new user (Using AWS console):
+### Add new user (Using AWS console):
 
 - Using the SSH Amamzon Lightsail console:
 ```sh
@@ -74,7 +74,7 @@ $ sudo nano /etc/sudoers.d/grader
 - Send CTRL+O (salve), ENTER (confirm), CTRL+X (exit nano). 
 - User grader already has sudo privilege.
 
-## Allow secure user access to grader:
+### Allow secure user access to grader:
 - Copy the public key generated on your local machine (main_key.pub) to this file and save
 ```sh
 $ su - grader
@@ -87,7 +87,7 @@ $ sudo nano .ssh/authorized_keys
 $ chmod 700 .ssh
 $ chmod 644 .ssh/authorized_keys
 ```
-## Secure SSH access without the Amazon console:
+### Secure SSH access without the Amazon console:
 - On your instance dashboard, Networking tab, add a Custom TCP application with Port range = 2200 to your instance's Firewall
 - Use the command below to open the file and edit line 4 from Port 22 to Port 2200. Save and quit nano.
 ```sh
@@ -101,7 +101,7 @@ $ service ssh restart
 ```sh
 ssh -i [privateKeyFilename] grader@52.24.125.52
 ```
-## Change the SSH port from 22 to 2200
+### Change the SSH port from 22 to 2200
 - Use
 ```sh
 $ sudo vim /etc/ssh/sshd_config
@@ -111,7 +111,7 @@ $ sudo vim /etc/ssh/sshd_config
 ```sh
 ssh grader@18.195.234.224 -i [privateKeyFilename] -p 2200
 ```
-## Create Rules and Enable Uncomplicated Firewall (UFW) 
+### Create Rules and Enable Uncomplicated Firewall (UFW) 
 - Check the current UFW status
 ```sh
 sudo ufw status
@@ -141,7 +141,7 @@ $ sudo ufw enable
 ```sh
 $ sudo ufw status
 ```
-## Remove root user access and password authentication
+### Remove root user access and password authentication
 - Open the right file by using
 ```sh
 $ sudo nano /etc/ssh/sshd_config
