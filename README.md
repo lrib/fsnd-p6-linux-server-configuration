@@ -23,9 +23,9 @@ Configuration Steps:
 ------------
 
 ## Criar uma VM no Amazon:
-- Criar uma VM na Amazon Lightsail [https://lightsail.aws.amazon.com/ls/webapp/home/instances];
-- Criar uma instancia de uma VM com Linux: [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
-- Esperar a maquina entrar em "running".
+- Create a VM on Amazon Lightsail [https://lightsail.aws.amazon.com/ls/webapp/home/instances];
+- Create an instance of a Linux VM: [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
+- Wait for "running".
 
 ## Update all currently installed packages:
 
@@ -61,20 +61,20 @@ Save the key: /c/Users/<YOUR_WINDOWS_USERNAME>/.ssh/main_key
 ```sh
 $ sudo adduser grader
 ```
- - Atribuir e confirmar uma senha para o novo usuário
- - Digite qualquer informação adicional sobre o novo usuário. Isso é totalmente opcional e pode ser ignorado se você não quiser utilizar esses campos.
- - Depois, você será solicitado a confirmar se as informações fornecidas estavam corretas. Digite Y para continuar.
+ - Assign and confirm a password for the new user
+ - Enter any additional information about the new user. This is completely optional and can be ignored if you do not want to use these fields.
+ - After then, you will be prompted to confirm that the information provided is correct. Enter Y to continue.
 
-- Atribuir acesso ao novo utilizador criado
+- Assign access to the newly created user.
 ```sh
 $ sudo touch /etc/sudoers.d/grader
 $ sudo nano /etc/sudoers.d/grader
 ```
-- Adicione no arquivo grader o comando: grader ALL=(ALL:ALL) ALL
-- Depois de adicionar o comando executar CTRL+O (salvar), ENTER (confirmar), CTRL+X (sair do nano). 
-- O usário grader já tem previlegio sudo.
+- Add in the grader file the command: grader ALL=(ALL:ALL) ALL
+- Send CTRL+O (salve), ENTER (confirm), CTRL+X (exit nano). 
+- User grader already has sudo privilege.
 
-## Permitir acesso seguro do usuario grader:
+## Allow secure user access to grader:
 - Copy the public key generated on your local machine (main_key.pub) to this file and save
 ```sh
 $ su - grader
@@ -87,7 +87,7 @@ $ sudo nano .ssh/authorized_keys
 $ chmod 700 .ssh
 $ chmod 644 .ssh/authorized_keys
 ```
-## Acesso seguro por SSH, sem o console Amazon:
+## Secure SSH access without the Amazon console:
 - On your instance dashboard, Networking tab, add a Custom TCP application with Port range = 2200 to your instance's Firewall
 - Use the command below to open the file and edit line 4 from Port 22 to Port 2200. Save and quit nano.
 ```sh
@@ -173,9 +173,6 @@ $ sudo service apache2 restart
 ```sh
 $ sudo apt-get install postgresql
 ```
-?????????????????????????????????????
-Check if no remote connections are allowed sudo vim /etc/postgresql/9.3/main/pg_hba.conf
-?????????????????????????????????????
 - Login as user "postgres" 
 ```sh
 $ sudo su - postgres
