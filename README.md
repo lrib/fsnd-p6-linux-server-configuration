@@ -133,6 +133,10 @@ $ sudo ufw allow 2200/tcp
 ```sh
 $ sudo ufw allow www
 ```
+- Allow incoming connection for NTP on port 123
+```sh
+$ sudo ufw allow ntp
+```
 - Enable firewall 
 ```sh
 $ sudo ufw enable
