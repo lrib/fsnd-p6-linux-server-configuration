@@ -22,7 +22,7 @@ This project's goal is to set up a Linux server to host one of the web applicati
 Configuration Steps:
 ------------
 
-## Criar uma VM no Amazon:
+## Create a VM on Amazon:
 - Create a VM on Amazon Lightsail [https://lightsail.aws.amazon.com/ls/webapp/home/instances];
 - Create an instance of a VM with Linux [Create Instance] -> [Linux] -> [Ubuntu 16.04] -> [Create Instance]
 - Waiting for "running" status.
@@ -309,7 +309,7 @@ sudo tail -f /var/log/apache2/error.log
 sudo tail -f /var/log/apache2/access.log
 ```
 
-Fontes consultadas
+Sources consulted
 ---------
 
 https://github.com/jungleBadger/-nanodegree-linux-server
